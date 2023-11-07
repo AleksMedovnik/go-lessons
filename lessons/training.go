@@ -1,0 +1,5 @@
+package lessons
+
+func Training() {
+
+}
