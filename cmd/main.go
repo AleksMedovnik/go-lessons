@@ -5,8 +5,8 @@ package main
 import (
 	// "fmt"
 
-	"github.com/AleksMedovnik/go-lessons/goroutines"
-	// "github.com/AleksMedovnik/go-lessons/lessons"
+	// "github.com/AleksMedovnik/go-lessons/goroutines"
+	"github.com/AleksMedovnik/go-lessons/lessons"
 	// "os"
 )
 
@@ -36,7 +36,6 @@ func main() {
 
 	// fmt.Printf("В следующем году тебе исполняется: %d", age+1)
 
-	// lessons.Generics()
-	goroutines.Mutexs()
+	lessons.Funcions()
 }
 

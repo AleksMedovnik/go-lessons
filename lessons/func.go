@@ -1,9 +1,9 @@
 package lessons
 
 import (
+	"errors"
 	"fmt"
 	"os"
-	"errors"
 )
 
 func Funcions() {
@@ -17,11 +17,19 @@ func Funcions() {
 	f()
 	fmt.Println(x) // 2
 
-	res, err := Sum(150, 150)
+	var a float64 = 15.0
+	var b float64 = 0
+	res, err := Divide(a, b)
 	if err != nil {
-		fmt.Println("Error")
+		fmt.Println(err.Error())
 	}
 	fmt.Println(res) // 3
+
+	fact, err := Factorial(0)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Println(fact) // -1
 
 }
 
@@ -81,36 +89,38 @@ func changeValue(x *int) {
 	*x++
 }
 
-func divide(x, y float64) float64 {
+func Divide(x, y float64) (float64, error) {
 	if y == 0 {
-		panic("Division by zero!") // генерирует ошибку
+		return -1, errors.New("Division by zero!")
 	}
-	return x / y
+	return x / y, nil
 }
 
 func sayHello(userName string, userAge int, isDeveloper bool) string {
 	return fmt.Sprintf("Hello, %s! Your age: %d and you are %t", userName, userAge, isDeveloper)
 }
 
-func factorial(n int) (int, error) {
+func Factorial(n int64) (int64, error) {
 	if n < 1 {
-		return 0, errors.New("Invalid input number")
+		return -1, errors.New("Invalid input number")
+	} else if n == 1 {
+		return n, nil
 	}
-	result := 1
-	for i := 1; i <= n; i++ {
+	var i int64
+	var result int64 = 1
+	for i = 2; i <= n; i++ {
 		result *= i
 	}
 	return result, nil
 }
 
-
 /*  Написать функцию sumAll(a), которая работает следующим образом:
 sumAll(1)(2) // 1 3 (Вывод в терминал по очереди)
 */
 
-/*  Написать функцию showParams, которая принимает неопределенное количество параметров 
+/*  Написать функцию showParams, которая принимает неопределенное количество параметров
 с именами пользователей и возвращает строку с именами при условии, что имя длинее 2-х символов.
-Example: 
+Example:
 names := showParams("Hi", "Alex", "Maxim", "X", "Masha")
 fmt.Println(names) // Alex Maxim Masha
 */
