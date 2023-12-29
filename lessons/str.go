@@ -18,7 +18,7 @@ func Str() {
 	fmt.Println(a)        // 97
 	fmt.Printf("%c\n", a) // a
 
-	a += 1
+	a++
 	fmt.Printf("%c\n", a) // b
 
 	// split
@@ -31,8 +31,11 @@ func Str() {
 	// Upper Case
 	upperLet := fmt.Sprintf("%c", message[0])
 	sliceStr := message[1:]
-	fmt.Println(upperLet + sliceStr) // Hello
+	fmt.Println(strings.ToUpper(upperLet) + sliceStr) // Hello
 
+	// #####################
+	str := ""
+	fmt.Println(rle(&str))  // ""
 }
 
 

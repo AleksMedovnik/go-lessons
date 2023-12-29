@@ -3,11 +3,7 @@ package main
 // go mod init github.com/AleksMedovnik/go-lessons
 
 import (
-	// "fmt"
-
-	// "github.com/AleksMedovnik/go-lessons/goroutines"
-	"github.com/AleksMedovnik/go-lessons/lessons"
-	// "os"
+	"github.com/AleksMedovnik/go-lessons/goroutines"
 )
 
 func main() {
@@ -36,6 +32,7 @@ func main() {
 
 	// fmt.Printf("В следующем году тебе исполняется: %d", age+1)
 
-	lessons.Funcions()
+	goroutines.Channel()
+
 }
 

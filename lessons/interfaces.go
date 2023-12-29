@@ -82,4 +82,8 @@ func Interfaces() {
 
 	reading(f1) // Hello
 
+
+
 }
+
+

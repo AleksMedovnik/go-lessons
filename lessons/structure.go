@@ -23,9 +23,9 @@ type person struct {
 }
 
 // структура односвязного списка
-type node struct{
-    value int
-    next *node
+type node struct {
+	value int
+	next  *node
 }
 
 func CustomType() {
@@ -75,14 +75,29 @@ func Structure() {
 	fmt.Println(u.address.country) // Russia
 	fmt.Println(u.country)         // Russia
 
-	first := node {value: 1}
-	second := node {value: 2}
-	third := node {value: 3}
+	first := node{value: 1}
+	second := node{value: 2}
+	third := node{value: 3}
 
 	first.next = &second
 	second.next = &third
 
 	printNodeValue(&first)
+
+	// #######################
+	// productList := []*product{
+	// 	product{"Iphone 13", 999, "About iphone 13"},
+	// 	product{"Iphone 14", 1050, "About iphone 14"},
+	// 	product{"Samsung Galaxy", 750, "Samsung Galaxy"},
+	// }
+
+	products := []*Product{
+		{"Iphone 13", "About Iphone 13", 999},
+		{"Iphone 14", "About Iphone 14", 1200},
+		{"Samsung Galaxy", "About Samsung", 800},
+	}
+
+	fmt.Println(averPrice(products)) // 999
 
 }
 
@@ -91,4 +106,23 @@ func printNodeValue(n *node) {
 	if n.next != nil {
 		printNodeValue(n.next)
 	}
+}
+
+// ########################################
+type Product struct {
+	title string
+	info  string
+	price int
+}
+
+// написать функцию averPrice, принимающую slice со структурами
+// Product и возвращающую среднюю стоимость продуктов
+
+// ###############################
+func averPrice(p []*Product) int {
+	res := 0
+	for _, product := range p {
+		res += product.price
+	}
+	return res / len(p)
 }

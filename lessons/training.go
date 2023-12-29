@@ -1,5 +1,0 @@
-package lessons
-
-func Training() {
-
-}

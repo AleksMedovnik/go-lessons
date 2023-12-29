@@ -10,6 +10,7 @@ func Arrays() {
 	numbers := [5]int{10, -3, 7, -8, 0}
 	fmt.Println(numbers[0])
 
+	// compare arrays
 	numbers2 := [5]int{10, -3, 7, -8, 0}
 	fmt.Println(numbers == numbers2) // true
 
@@ -96,8 +97,6 @@ func Slices() {
 	slices.Reverse(numbers)
 	fmt.Println(numbers) // [33 33 8 0 -10]
 
-
-
 	// capacity
 	ns := make([]int, 10)
 	fmt.Println(len(ns)) // 10
@@ -138,6 +137,9 @@ func Slices() {
 	abc = changeSliceNew(abc)
 	fmt.Println(abc) // [4 4 4 4 4]
 
+	arr := [5]int{1, 2, 3, 5, 6}
+	f(arr)
+
 }
 
 func changeSlice(abc []int) {
@@ -163,7 +165,6 @@ func changeSliceNew(abc []int) []int {
 	}
 	return abc
 }
-
 
 /* Написать функцию findMaxValue, которая принимает слайс с целыми числами
 и возвращает максимальное число.
@@ -208,9 +209,6 @@ fmt.Println(findRightValue(56, empty)) // -1
 
 Задачу решить без применения стандартной или сторонних библиотек. */
 
-
-
-
 func findMaxValue(arr []int) int {
 	x := arr[0]
 	for i := 1; i < len(arr); i++ {
@@ -242,3 +240,6 @@ func findRightValue(n int, arr []int) int {
 	return x
 }
 
+func f(array [5]int) {
+	array[0] = 10
+}

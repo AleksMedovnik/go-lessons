@@ -1,9 +1,12 @@
 package goroutines
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func Channel() {
-	// Небуфферизированный канал
+	// Небуферизированный канал
 	intCh := make(chan int) // канал для данных типа int
 
 	// получение данных из анонимной функции
@@ -75,17 +78,13 @@ func Channel() {
 	for num := range channel {
 		fmt.Println(num) // 1 3 6 10 15
 	}
+
+	m := make(chan string)
+	go getMessage(m)
+	fmt.Println(<- m)
 }
 
-/* func factorial(n int, ch chan int) {
-	result := 1
-	for i := 1; i <= n; i++ {
-		result *= i
-	}
-	ch <- result
-} */
-
-func factorial(n int, ch chan<- int) {
+func factorial(n int, ch chan int) {
 	result := 1
 	for i := 1; i <= n; i++ {
 		result *= i
@@ -101,3 +100,24 @@ func sumTo(n int, ch chan int) {
 		ch <- result // посылаем по числу
 	}
 }
+
+/*
+Написать функцию getMessage. Она должна запросить сообщение от пользователя,
+а затем передаеть его в канал.
+
+Подготовиться по вопросам.
+1. Что такое горутина?
+2. Что такое канал?
+3. Как горутина работает с небуферизированными каналами?
+*/
+
+func getMessage(ch chan string) {
+	var message string
+	fmt.Print("Введите сообщение: ")
+	fmt.Fscan(os.Stdin, &message)
+	ch <- message
+}
+
+// m := make(chan string)
+// go getMessage(m)
+// fmt.Println(<- m)
