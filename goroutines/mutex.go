@@ -30,3 +30,42 @@ func work(number int, ch chan bool, mutex *sync.Mutex) {
 	mutex.Unlock() // деблокируем доступ
 	ch <- true
 }
+
+
+/* 
+var counter int = 0 
+
+func main() {
+	ch := make(chan bool)
+	for i := 1; i < 5; i++ {
+		go work(i, ch)
+	}
+}
+
+func work(number int, ch chan bool) {
+	for i := 1; i < 5; i++ {
+		counter++
+		fmt.Println("Goroutine:", i, "-", counter)
+	}
+	ch <- true
+}
+
+Сделать так, чтобы получить следующий результат:
+
+Goroutine: 1 - 1
+Goroutine: 2 - 2 
+Goroutine: 3 - 3 
+Goroutine: 4 - 4 
+Goroutine: 1 - 5 
+Goroutine: 2 - 6 
+Goroutine: 3 - 7 
+Goroutine: 4 - 8 
+Goroutine: 1 - 9 
+Goroutine: 2 - 10
+Goroutine: 3 - 11
+Goroutine: 4 - 12
+Goroutine: 1 - 13
+Goroutine: 2 - 14
+Goroutine: 3 - 15
+Goroutine: 4 - 16
+*/

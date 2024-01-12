@@ -3,29 +3,26 @@ package train
 import "fmt"
 
 func Training() {
-	intCh := make(chan int)
+	ch1 := make(chan string)
+	ch2 := make(chan string)
 
-	go factorial(intCh)
+	go f1(ch1)
+	go f2(ch2)
 
-	for i := 1; i <= 3; i++ {
-		fmt.Println(<-intCh)
+	for i := 0; i < 2; i++ {
+		select {
+		case mes1 := <-ch1:
+			fmt.Println(mes1)
+		case mes2 := <-ch2:
+			fmt.Println(mes2)
+		}
 	}
 }
 
-func factorial(ch chan int) {
-	result, count := 1, 1
-	for {
-		result *= count
-		count++
-		ch <- result 
-	}
+func f1(ch chan string) {
+	ch <- "Hello from F1"
 }
 
-
-/* func fibonacci(ch chan int) {
-	a, b := 0, 1
-	for {
-		a, b = b, a + b
-		ch <- a
-	}
-} */
+func f2(ch chan string) {
+	ch <- "Hello from F2"
+}
